@@ -125,6 +125,7 @@ open TapGate.xcodeproj
 プロジェクトを開いた後、Signing & Capabilities タブで自身の Apple Developer Team および Bundle Identifier に設定を変更します。
 
 ```bash
+cd ..
 python3 -m pip install -e ".[push]"
 ```
 
@@ -157,4 +158,4 @@ npm ci && npx playwright install chromium && npm test
 
 ### アカウントと実機検証
 
-本公開はソース公開でありApp Store配布ではありません。開発者はApple Developer Program未登録/不明です。無料Personal Teamでの実機UI検証はPush権限除外と7日更新が必要（未実施）で、APNs実機Pushや配布には有料登録が必要です。
+本公開はソース公開でありApp Store配布ではありません。無料Personal Teamでの実機UI検証はPush権限除外と7日更新が必要（未実施）で、APNs実機Pushや配布には有料登録が必要です。
