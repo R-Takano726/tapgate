@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f8f9fc" />
+    <title>TapGate — Approval inbox</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <div class="ambient ambient-blue"></div>
+    <div class="ambient ambient-peach"></div>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="TapGate ホーム"
+        ><span class="brand-icon">⌘</span>TapGate<span class="beta"
+          >PREVIEW</span
+        ></a
+      >
+      <div class="top-right">
+        <span id="connection" class="connection"><i></i>Connecting</span
+        ><button id="refresh" class="icon-button" aria-label="更新">↻</button>
+      </div>
+    </header>
+    <main>
+      <section id="pairing" class="pairing glass" hidden>
+        <span class="brand-icon large">⌘</span>
+        <h1 data-copy="pairingTitle"></h1>
+        <p data-copy="demoBody"></p>
+        <form id="pair-form">
+          <label for="code" data-copy="pairingCode"></label
+          ><input
+            id="code"
+            name="code"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            pattern="[0-9]{8}"
+            maxlength="8"
+            placeholder="0000 0000"
+            required
+          /><button class="primary" data-copy="connect"></button>
+        </form>
+        <p class="error" id="pair-error" role="alert"></p>
+      </section>
+      <div id="workspace" hidden>
+        <div id="demo-banner" class="demo-banner" hidden>
+          <span class="demo-dot"></span><b data-copy="demo"></b
+          ><span data-copy="demoBody"></span>
+        </div>
+        <section class="page-heading">
+          <div>
+            <div class="eyebrow">YOUR NEXT MOVE</div>
+            <h1 data-copy="inboxTitle"></h1>
+            <p data-copy="inboxSubtitle"></p>
+          </div>
+          <div class="count-bubble glass">
+            <b id="pending-count">0</b><span data-copy="pending"></span>
+          </div>
+        </section>
+        <div class="layout">
+          <section class="inbox-column">
+            <nav class="tabs glass" aria-label="受信箱">
+              <button data-tab="pending" class="active">
+                <span class="nav-icon">◉</span><span data-copy="pending"></span
+                ><span id="nav-count" class="pill-count">0</span></button
+              ><button data-tab="history">
+                <span class="nav-icon">◷</span
+                ><span data-copy="history"></span></button
+              ><button data-tab="settings">
+                <span class="nav-icon">⚙</span
+                ><span data-copy="settings"></span>
+              </button>
+            </nav>
+            <div class="list-header">
+              <span id="list-label">INBOX</span>
+              <div class="filters">
+                <button
+                  data-source="all"
+                  class="active"
+                  data-copy="all"
+                ></button
+                ><button data-source="codex">Codex</button
+                ><button data-source="claude">Claude</button>
+              </div>
+            </div>
+            <div id="requests" class="requests" aria-live="polite"></div>
+            <section id="settings-panel" class="settings-panel glass" hidden>
+              <h2 data-copy="notificationTitle"></h2>
+              <p data-copy="notificationBody"></p>
+              <div id="push-state"></div>
+              <h2 data-copy="privacyTitle"></h2>
+              <p data-copy="privacyBody"></p>
+              <button
+                id="logout"
+                class="secondary"
+                data-copy="disconnected"
+              ></button>
+            </section>
+            <p
+              id="status"
+              class="status-message"
+              role="status"
+              aria-live="polite"
+            ></p>
+          </section>
+          <aside class="watch-column">
+            <div class="watch-label">
+              <span class="sparkle">✦</span><span data-copy="watchTitle"></span
+              ><span class="preview-label">LIVE PREVIEW</span>
+            </div>
+            <div class="watch-stage">
+              <div class="watch-strap top"></div>
+              <div class="watch-strap bottom"></div>
+              <div class="watch-case">
+                <div class="crown"></div>
+                <div class="watch-screen">
+                  <div class="watch-status">
+                    <span>TapGate</span><time id="watch-time">9:41</time>
+                  </div>
+                  <div id="watch-content"></div>
+                </div>
+              </div>
+            </div>
+            <p class="watch-caption" data-copy="watchHint"></p>
+            <div class="private-note">
+              <span>♧</span><span data-copy="privacyTitle"></span>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <span>TapGate</span><span>ONE DECISION. ONE TAP.</span
+      ><span>Codex + Claude Code</span>
+    </footer>
+    <dialog id="detail-dialog" class="detail-dialog glass">
+      <div class="dialog-header">
+        <span data-copy="details"></span
+        ><button id="close-detail" class="icon-button" aria-label="閉じる">
+          ×
+        </button>
+      </div>
+      <div id="detail-content"></div>
+    </dialog>
+  </body>
+</html>

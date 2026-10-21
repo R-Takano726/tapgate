@@ -1,0 +1,56 @@
+name: TapGate
+options:
+  bundleIdPrefix: com.example.tapgate
+  deploymentTarget:
+    iOS: "26.0"
+    watchOS: "26.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    DEVELOPMENT_TEAM: ""
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    CODE_SIGN_STYLE: Automatic
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+targets:
+  TapGate:
+    type: application
+    platform: iOS
+    sources: [Shared, iPhone]
+    dependencies:
+      - target: TapGateWatch
+        embed: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.tapgate
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: TapGate
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UIBackgroundModes: [remote-notification]
+        TARGETED_DEVICE_FAMILY: "1"
+    entitlements:
+      path: iPhone/TapGate.entitlements
+      properties:
+        aps-environment: development
+  TapGateWatch:
+    type: application
+    platform: watchOS
+    sources: [Shared, Watch]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.tapgate.watchkitapp
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: TapGate
+        INFOPLIST_KEY_WKCompanionAppBundleIdentifier: com.example.tapgate
+        INFOPLIST_KEY_WKWatchOnly: NO
+        INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp: NO
+schemes:
+  TapGate:
+    build:
+      targets:
+        TapGate: all
+  TapGateWatch:
+    build:
+      targets:
+        TapGateWatch: all

@@ -1,0 +1,76 @@
+{
+  "product": "TapGate",
+  "date": "2026-10-21",
+  "validation": {
+    "python": {
+      "command": "python3 -m unittest discover -s tests -v",
+      "passed": 40,
+      "failed": 0,
+      "coverage": [
+        "single-use pairing and global attempt limit",
+        "auth roles and Watch surface enforcement",
+        "payload binding, expiry, concurrency, cancellation and transport acknowledgement",
+        "APNs data minimization, retries and unregistered-device removal",
+        "Claude hook to live broker round trip with synthetic input",
+        "Codex JSONL transport to live broker with synthetic subprocess",
+        "quick notification exact context and private-mode category gate"
+      ]
+    },
+    "codex_protocol": {
+      "executable_version": "0.163.0",
+      "initialize": "passed",
+      "inference_executed": false
+    },
+    "apple": {
+      "xcode": "27.1 (27A9275)",
+      "iOS_simulator_sdk_build": "passed",
+      "watchOS_simulator_sdk_build": "passed",
+      "code_signing": false,
+      "runtime_launch": "not tested: installed CoreSimulator 1051.55.0 is older than required 1174.9.2",
+      "physical_device_install": "not performed",
+      "APNs_delivery": "not performed"
+    },
+    "claude_review": {
+      "model": "claude-opus-5-5",
+      "effort": "medium",
+      "design": "performed",
+      "implementation": "performed; fixes independently rechecked; focused notification review complete, fallback task-label disclosure fixed",
+      "scope": "read-only ephemeral review"
+    },
+    "not_verified": [
+      "physical Watch/iPhone notification and lifecycle behavior",
+      "Tailscale Serve forwarding in user tailnet",
+      "actual AI-generated tool permission request (synthetic adapter roundtrips tested)",
+      "App Store or TestFlight distribution"
+    ],
+    "browser": {
+      "command": "npm test",
+      "engine": "Chromium via Playwright",
+      "passed": 18,
+      "failed": 0,
+      "backing_service": "live Python broker + SQLite, isolated synthetic credentials and data",
+      "coverage": [
+        "one-tap Watch preview allow and result pin",
+        "deny and history",
+        "full detail for publish and long actions",
+        "filters and settings",
+        "network failure, offline and reconnection",
+        "double click one POST",
+        "dismiss without deciding",
+        "informational notice cannot decide",
+        "XSS rendered as text",
+        "390px mobile overflow",
+        "reduced motion",
+        "keyboard and Escape",
+        "logout revocation",
+        "expiry",
+        "invalid pairing code"
+      ]
+    },
+    "package": {
+      "wheel_build": "passed",
+      "clean_venv_install": "passed",
+      "installed_cli_help": "passed"
+    }
+  }
+}
